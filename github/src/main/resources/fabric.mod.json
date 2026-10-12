@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "smprules",
+  "version": "${version}",
+
+  "name": "SMP Rules & Team Claims",
+  "description": "Complete SMP rule enforcer mod featuring Peaceful & PvP team divisions, unique team colors, fair claim minimap with coordinates, 5-min offline siege protection, 2-min combat tag logger, and Netherite/Mace/Anchor/Crystal item restrictions.",
+  "authors": [
+    "kashak213"
+  ],
+  "contact": {
+    "sources": "https://github.com/kashak213"
+  },
+
+  "license": "MIT",
+  "icon": "assets/smprules/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.smprules.SMPRulesMod"
+    ],
+    "client": [
+      "com.smprules.client.SMPRulesClientMod"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
