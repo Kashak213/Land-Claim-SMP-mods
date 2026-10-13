@@ -4,7 +4,7 @@ This custom Fabric mod (`smprules`) enforces all of your Minecraft server rules 
 
 ---
 
-## 🛠️ How to Compile the `.jar` File
+##  How to Compile the `.jar` File
 
 There are two super easy ways to build `smprules-1.0.0.jar`:
 
