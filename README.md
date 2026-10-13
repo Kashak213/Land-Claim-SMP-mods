@@ -1,105 +1,75 @@
-#  SMP Server Mod Setup & Distribution Guide
+# SMP Rules Mod
 
-This custom Fabric mod (`smprules`) enforces all of your Minecraft server rules automatically.
+A custom, server-side Fabric mod built specifically for managing SMP gameplay, enforcing PvP rules, land claiming, and preventing cheating. 
 
----
+## Features
 
-##  How to Compile the `.jar` File
+### PvP & Combat
+* **PvP Countdown:** Automatically enables PvP after a set number of real-world days.
+* **Combat Logging Prevention:** Hitting a player initiates a 2-minute combat tag. If a tagged player disconnects, they instantly die, drop their inventory and a trophy head, and broadcast a combat-logging elimination message to the server.
+* **Trophy Heads:** When a player dies in PvP, they drop a player head. The head has custom lore showing the killer, date, and time (in Eastern Time). If you place the head down as a block and break it later, this lore is perfectly preserved!
+* **Friendly Fire:** Melee/arrow damage is blocked between teammates, but explosion damage (TNT/Creepers) is still allowed.
+* **The End Lock:** Access to The End is disabled until an admin manually unlocks it.
 
-There are two super easy ways to build `smprules-1.0.0.jar`:
+### Land Claiming & Teams
+* **Teams:** Players can create teams and invite others.
+* **Chunk Claiming:** Teams can claim chunks (`/smpclaim claim`) to protect their builds. Maximum claims depend on the number of players in the team (configurable).
+* **Chunk Highlights:** `/smpclaim highlight` will render highly visible, glowing particle borders around the chunk you are standing in for 10 seconds.
+* **Claim Messages:** Walking in and out of claims displays a custom text HUD above your hotbar, instantly telling you whose land you are entering or if you are in the Wilderness.
+* **Villages:** Villages are strictly public territory and cannot be claimed.
+* **Spawn Protection:** Only admins can build or break blocks in the spawn area.
 
-### Option A: Using any IDE (IntelliJ IDEA / VS Code / Eclipse)
-1. Open the project folder `fabric-smp-rules` in IntelliJ IDEA (or VS Code).
-2. Open the Gradle tab on the right side.
-3. Double-click **`build`** (or run `gradle build` in terminal).
-4. Your finished mod JAR will be located at: `build/libs/smprules-1.0.0.jar`!
+### Anti-Cheat & Restrictions
+* **Banned Items:** Crafting, using, or placing restricted items (e.g., Netherite gear, End Crystals, Maces, Respawn Anchors) is blocked.
+* **Elytra Combat:** Attacking other players while flying with an Elytra is strictly forbidden.
+* **3-Strike System:**
+  1. **Strike 1:** Warning.
+  2. **Strike 2:** The player's entire inventory and armor are wiped and replaced with **Ink Sacs**.
+  3. **Strike 3:** Permanent ban.
 
-### Option B: Automatic Free GitHub Build (.github/workflows/build.yml)
-* We added a **GitHub Actions automated build workflow**! If you push this folder to GitHub, GitHub will compile `smprules-1.0.0.jar` automatically in 30 seconds and let you download the `.jar` under **Actions -> Artifacts**.
-
----
-
-##  World Border Management Commands (`/smpadmin border`)
-
-* `/smpadmin border set <blocks>` — Set World Border size centered on World Spawn.
-* `/smpadmin border expand <blocks>` — Expand World Border by specified block count.
-* `/smpadmin border status` — View current border size and bounds.
-
----
-
-##  Anti-Elytra Combat Fleeing System
-
-* Allowed for normal survival travel.
-* Flight & Firework Rockets hard-blocked during 2-minute PvP Combat Tag.
-* Does **NOT** trigger when fighting mobs (Zombies, Skeletons, boss fights).
+### Dashboard & Stats
+* **Session Tracking:** Tracks playtime and disconnects (all timestamps use Eastern Time).
+* **Death Logging:** Records the exact location and cause of death.
 
 ---
 
-##  Player PvP Trophy Head Drops
+## Player Commands
 
-* Custom skin head drops on PvP elimination.
-* Custom Display Name: `💀 <VictimName>'s Trophy Head`
-* Lore: `⚔ Slain by: <KillerName>`, `📅 Date: YYYY-MM-DD`, `⏰ Time: HH:mm:ss`.
-
----
-
-##  End Dimension Lock System
-
-| Command | Action |
-| :--- | :--- |
-| `/smpadmin endunlock` | Officially **UNLOCKS** the End dimension for everyone and broadcasts a server alert! |
-| `/smpadmin endlock` | Locks the End dimension. |
-| `/smpadmin endstatus` | Check if the End is currently locked or unlocked. |
+* **`/smphelp`** — Opens the custom help menu showing server rules, End/PvP status, and a command cheat sheet.
+* **`/smprules`** — Displays a full list of all server rules.
+* **`/smpteam list`** — See all active teams.
+* **`/smpteam info [name]`** — See details, members, and claim limits for a specific team.
+* **`/smpclaim claim`** — Claim the chunk you are currently standing in for your team.
+* **`/smpclaim unclaim`** — Unclaim the chunk you are standing in.
+* **`/smpclaim highlight`** — Show glowing 10-second borders around the chunk you are in.
+* **`/smpclaim view`** — View a list of all chunks your team has claimed.
+* **`/smpclaim info`** — See who owns the chunk you are currently standing in.
 
 ---
 
-##  Admin Dashboard: Activity, PvP Kill Feed & Playtime (`/smpdashboard`)
+## Admin Commands
 
-| Command | Action |
-| :--- | :--- |
-| `/smpdashboard` | View recent security flags & dashboard overview. |
-| `/smpdashboard kills` | View timestamped **PvP Kill Feed** ("Who killed who"). |
-| `/smpdashboard deaths` | View **Deaths & Kills Leaderboard** for all players. |
-| `/smpdashboard playtime` | View **Total Playtime** for all players. |
-| `/smpdashboard activity` | View recent **Session Join/Leave logs** & durations. |
-
----
-
-##  Manual Admin Ban & Unban Override Commands
-
-| Command | Action |
-| :--- | :--- |
-| `/smpban <player> [reason]` | Manually ban a player with a custom reason. |
-| `/smpunban <player_name>` | Manually unban a player and reset their AntiCheat strikes to 0. |
-
----
-
-##  Full Admin Commands (`/smpteam`, `/smpadmin`, `/smpdashboard`, `/smpban`) *(Requires OP)*
-
-| Command | Action |
-| :--- | :--- |
-| `/smpadmin border set <size>` | Set World Border centered on World Spawn. |
-| `/smpadmin border expand <amount>` | Expand World Border size by specified blocks. |
-| `/smpadmin border status` | View current World Border size and center bounds. |
-| `/smpadmin endunlock` | Unlock the End dimension for all players. |
-| `/smpadmin endlock` | Lock the End dimension. |
-| `/smpban <player> [reason]` | Manually ban a player with a custom reason. |
-| `/smpunban <player_name>` | Manually unban a player and reset their strikes to 0. |
-| `/smpdashboard` | View timestamped anti-cheat security log dashboard. |
-| `/staffmode` or `/smpstaff` | Toggle between **Survival Profile** and **Staff Admin Profile**. |
-| `/smpadmin spawntoggle` | Toggle Spawn Protection **ON or OFF** for testing. |
-| `/smpadmin resetdata` | Clear all test teams, claims, and test permissions before official launch. |
-| `/smpteam create peaceful <name> <leader>` | Create a **Peaceful Team** (assigned unique color). |
-| `/smpteam create pvp <name> <leader>` | Create a **PvP Team** (assigned unique color). |
-
----
-
-##  Player Commands
-| Command | Action |
-| :--- | :--- |
-| `/smpclaim claim` | Claims current chunk + outlines border in team's unique color. |
-| `/smpclaim unclaim` | Unclaims current chunk. |
-| `/smpclaim highlight` | Outlines current chunk border in team's color particles. |
-| `/smpclaim view` | Outlines **ALL** claimed team chunks in team color particles! |
-| `/smpteam info [team]` | View team member list, class, color, and claim count. |
-| `/smprules` | View server rules summary. |
+* **`/smpadmin pvpstart`** — Starts the 48-hour countdown to automatically enable PvP.
+* **`/smpadmin pvpstatus`** — Checks the remaining time on the PvP countdown.
+* **`/smpadmin pvpon`** — Forcefully enables PvP immediately.
+* **`/smpadmin pvpoff`** — Forcefully disables PvP.
+* **`/smpadmin unlockend`** — Unlocks the End dimension.
+* **`/smpadmin tpspawn [player]`** — Teleports yourself (or a target player) to world spawn.
+* **`/smpadmin resetinventories`** — Clears the inventory of every online player.
+* **`/smpban <player> [reason]`** — Manually permabans a player.
+* **`/smpunban <player>`** — Unbans a player and clears their strikes.
+* **`/smpteam setpeaceful <team>`** — Forces a team to be peaceful (cannot raid or be raided).
+* **`/smpteam setpvp <team>`** — Forces a team to be PvP-enabled.
+* **`/smpteam disband <team>`** — Forcefully deletes a team.
+* **`/smpteam create <name> peaceful/pvp <leader>`** — Create a team.
+* **`/smpteam addplayer <team> <player>`** — Forcefully add a player to a team.
+* **`/smpteam removeplayer <player>`** — Kicks a player from their team.
+* **`/smpadmin markpaid <team>`** — Mark a peaceful team as having paid their tax for the 3-day cycle.
+* **`/smpadmin markunpaid <team>`** — Mark a peaceful team as UNPAID for the 3-day cycle.
+* **`/smpdashboard`** — View the overall security & activity dashboard.
+* **`/smpdashboard tax`** — View the 3-day Tax tracker and payment status of all Peaceful teams.
+* **`/smpdashboard kills`** — View all PvP kills.
+* **`/smpdashboard deaths`** — View all player deaths.
+* **`/smpdashboard playtime`** — View total playtime for players.
+* **`/smpdashboard activity`** — View recent session activity logs.
+* **`/smpdashboard strikes`** — View AntiCheat strikes for all players.
