@@ -1,4 +1,4 @@
-# 🎮 SMP Server Mod Setup & Distribution Guide
+#  SMP Server Mod Setup & Distribution Guide
 
 This custom Fabric mod (`smprules`) enforces all of your Minecraft server rules automatically.
 
@@ -19,7 +19,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 🌐 World Border Management Commands (`/smpadmin border`)
+##  World Border Management Commands (`/smpadmin border`)
 
 * `/smpadmin border set <blocks>` — Set World Border size centered on World Spawn.
 * `/smpadmin border expand <blocks>` — Expand World Border by specified block count.
@@ -27,7 +27,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 🚫 Anti-Elytra Combat Fleeing System
+##  Anti-Elytra Combat Fleeing System
 
 * Allowed for normal survival travel.
 * Flight & Firework Rockets hard-blocked during 2-minute PvP Combat Tag.
@@ -35,7 +35,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 💀 Player PvP Trophy Head Drops
+##  Player PvP Trophy Head Drops
 
 * Custom skin head drops on PvP elimination.
 * Custom Display Name: `💀 <VictimName>'s Trophy Head`
@@ -43,7 +43,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 🌌 End Dimension Lock System
+##  End Dimension Lock System
 
 | Command | Action |
 | :--- | :--- |
@@ -53,7 +53,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 📊 Admin Dashboard: Activity, PvP Kill Feed & Playtime (`/smpdashboard`)
+##  Admin Dashboard: Activity, PvP Kill Feed & Playtime (`/smpdashboard`)
 
 | Command | Action |
 | :--- | :--- |
@@ -65,7 +65,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 🔨 Manual Admin Ban & Unban Override Commands
+##  Manual Admin Ban & Unban Override Commands
 
 | Command | Action |
 | :--- | :--- |
@@ -74,7 +74,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 👑 Full Admin Commands (`/smpteam`, `/smpadmin`, `/smpdashboard`, `/smpban`) *(Requires OP)*
+##  Full Admin Commands (`/smpteam`, `/smpadmin`, `/smpdashboard`, `/smpban`) *(Requires OP)*
 
 | Command | Action |
 | :--- | :--- |
@@ -94,7 +94,7 @@ There are two super easy ways to build `smprules-1.0.0.jar`:
 
 ---
 
-## 👥 Player Commands
+##  Player Commands
 | Command | Action |
 | :--- | :--- |
 | `/smpclaim claim` | Claims current chunk + outlines border in team's unique color. |
