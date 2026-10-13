@@ -73,3 +73,5 @@ A custom, server-side Fabric mod built specifically for managing SMP gameplay, e
 * **`/smpdashboard playtime`** — View total playtime for players.
 * **`/smpdashboard activity`** — View recent session activity logs.
 * **`/smpdashboard strikes`** — View AntiCheat strikes for all players.
+
+* refer to "READ_ME_SERVER_SET_UP" for further instructions on how to download, upload (though each server hosting software has different ways to upload JAR files so I recommend a specialized tutorial), and further use the mode with a complete list of commands.
